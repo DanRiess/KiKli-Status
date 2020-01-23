@@ -1,0 +1,188 @@
+* {
+  font-family: "Roboto Condensed", sans-serif;
+  color: rgb(156, 163, 175)
+}
+
+body {
+  background-color: rgb(33, 37, 43);
+  color: rgb(156, 163, 175) font-size: 14px;
+}
+
+label {
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 24px;
+  display: inline-block;
+  float: left;
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.jumbotron {
+  background-color: rgb(40, 44, 52);
+  color: rgb(156, 163, 175)
+}
+
+.row {
+  margin: 0 auto;
+}
+
+.button {
+  font-weight: normal;
+  text-align: center;
+  border: 2px solid rgb(40, 44, 52);
+}
+
+.button-opb {
+  font-weight: normal;
+  text-align: center;
+  border: 2px solid rgb(40, 44, 52);
+  padding: 5px;
+}
+
+.button:hover {
+  background-color: rgb(103, 113, 133);
+  border: rgb(68, 74, 87) 2px solid;
+  border-radius: 2px;
+  transition: background .2s;
+}
+
+.button-opb:hover {
+  background-color: rgb(103, 113, 133);
+  border: rgb(68, 74, 87) 2px solid;
+  border-radius: 2px;
+  transition: background .2s;
+}
+
+.submit {
+  font-weight: bold;
+  text-align: center;
+  padding: 3px;
+  font-size: 16px;
+  color: rgb(75, 93, 255);
+  border: rgb(75, 93, 255) 2px solid;
+  border-radius: 2px;
+}
+
+.submit:hover {
+  background-color: rgba(99, 83, 187, 0.4);
+  border-radius: 2px;
+  transition: background .4s;
+}
+
+input:checked+.button {
+  background-color: rgba(53, 153, 38, 0.4);
+  border: green 2px solid;
+  border-radius: 2px;
+}
+
+input:checked+.button-opb {
+  background-color: rgba(53, 153, 38, 0.4);
+  border: green 2px solid;
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+input[type=text]:active+.button-opb {
+  background-color: rgba(53, 153, 38, 0.4);
+  border: green 2px solid;
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+input[type=checkbox] {
+  display: none
+}
+
+input[type=radio] {
+  display: none
+}
+
+button {
+  display: none;
+}
+
+.jumbotron {
+  padding: 20px 0;
+}
+
+.hide {
+  display: none;
+}
+
+.dropdown {
+  float: right;
+  margin: 0 15% 0 0;
+  border: 2px #ffa500 solid;
+  border-radius: 2px;
+  background-color: rgba(240, 131, 32, 0.4);
+  padding: 5px;
+}
+
+.dropdown:hover {
+  background-color: rgb(103, 113, 133);
+  border: #ffa500 2px solid;
+  border-radius: 2px;
+  transition: background .3s;
+}
+
+input[type=checkbox]:checked+div {
+  display: block;
+}
+
+.textbox {
+  text-align: right;
+  margin: 0;
+}
+
+.input-group-text {
+  font-size: 16px;
+  padding: 0;
+  display: inline-block;
+}
+
+.abnormal input {
+  width: 50%;
+  display: inline-block;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+#rr-dia {
+  width: 40px;
+}
+
+#rr-sys {
+  width: 40px;
+}
+
+#temp {
+  width: 40px;
+  margin: 10px 0;
+}
+
+#herzfrequenz-num {
+  width: 40px;
+}
+
+#spo2 {
+  width: 40px;
+}
+
+textarea {
+  min-width: 100%;
+}
+
+.input-group-text {
+  display: inline-block;
+}

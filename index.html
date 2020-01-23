@@ -1,0 +1,978 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="./style.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <title>Anamnesebogen Kinderklinik</title>
+</head>
+<body>
+  <header class="container">
+    <div class="row">
+      <h1 class="col-sm-4">Status</h1>
+    </div>
+  </header>
+  <form action="./status.html" method="GET">
+    <section class="jumbotron">
+      <h2>Patientendaten</h2>
+      <section class="container" id="geschlecht">
+        <div class="row">
+          <h4 class="col-sm-2">Geschlecht</h4>
+          <div class="col-sm-10">
+            <input type="radio" name="geschlecht" value="männlich" id="geschlecht-m">
+            <label class="col-sm-2 button" for="geschlecht-m">männlich</label>
+            <input type="radio" name="geschlecht" value="weiblich" id="geschlecht-w">
+            <label class="col-sm-2 button" for="geschlecht-w">weiblich</label>
+          </div>
+        </div>
+      </section>
+      <section class="container" id="alter">
+        <div class="row">
+          <h4 class="col-sm-2">Alter</h4>
+          <div class="col-sm-10">
+            <input type="number" name="alter-num">
+            <select name="alter">
+              <option value="jährig">Jahre</option>
+              <option value="Monate alt">Monate</option>
+              <option value="Wochen alt">Wochen</option>
+              <option value="Tage alt">Tage</option>
+            </select>
+          </div>
+        </div>
+      </section>
+      <section class="container" id="vitalparameter">
+        <div class="row">
+          <h4 class="col-sm-2">Vitalparameter</h4>
+          <div class="col-sm-9">
+            <label class="col-sm-3" for="temp">Temperatur: <input type="text" size="10" name="temp" id="temp"> °C</label>
+            <label class="col-sm-3" for="rr-sys">RR: <input type="text" size="10" name="rr-sys" id="rr-sys">/<input type="text" size="10" name="rr-dia" id="rr-dia"> mmHg</label>
+            <label class="col-sm-3" for="herzfrequenz-num">Herzfrequenz: <input type="text" name="herzfrequenz-num" id="herzfrequenz-num"> bpm</label>
+            <label class="col-sm-2" for="spo2">SpO2: <input type="text" name="spo2" id="spo2"> %</label>
+          </div>
+        </div>
+      </section>
+    </section>
+  <section class="jumbotron">
+    <h2>Status praesens</h2>
+    <section class="container" id="az">
+      <div class="row">
+        <h4 class="col-sm-2">AZ</h4>
+        <div class="col-sm-9 textbox">
+          <input type="radio" name="AZ" value="vitalem" id="az-vital">
+          <label class="col-sm-2 button" for="az-vital">vital</label>
+          <input type="radio" name="AZ" value="reduziertem" id="az-reduziert">
+          <label class="col-sm-2 button" for="az-reduziert">reduziert</label>
+          <input type="radio" name="AZ" value="krankem" id="az-krank">
+          <label class="col-sm-1 button" for="az-krank">krank</label>
+          <input type="radio" name="AZ" value="schwerkrankem" id="az-schwerkrank">
+          <label class="col-sm-2 button" for="az-schwerkrank">schwerkrank</label>
+          <input type="radio" name="AZ" value="somnolentem" id="az-somnolent">
+          <label class="col-sm-2 button" for="az-somnolent">somnolent</label>
+          <input type="radio" name="AZ" value="komatösem" id="az-comatose">
+          <label class="col-sm-2 button" for="az-comatose">komatös</label>
+        </div>
+      </div>
+    </section>
+    <section class="container" id="ez">
+      <div class="row">
+        <h4 class="col-sm-2">EZ</h4>
+        <div class="col-sm-9 textbox">
+          <input type="radio" name="EZ" value="eutrophem" id="ez-eutroph">
+          <label class="col-sm-2 button" for="ez-eutroph">eutroph</label>
+          <input type="radio" name="EZ" value='dystrophem' id="ez-dystroph">
+          <label class="col-sm-2 button" for="ez-dystroph">dystroph</label>
+          <input type="radio" name="EZ" value="adipösem" id="ez-adipose">
+          <label class="col-sm-2 button" for="ez-adipose">Adipositas</label>
+          <label class='col-sm-5'></label>
+        </div>
+      </div>
+    </section>
+    <section class="container" id="pflegezustand">
+      <div class="row">
+        <h4 class="col-sm-2">Pflegezustand</h4>
+        <div class="col-sm-9 textbox">
+          <input type="radio" name="pflegezustand" value="gutem" id="pflege-gut">
+          <label class="col-sm-2 button" for="pflege-gut">gut</label>
+          <input type="radio" name="pflegezustand" value="reduziertem" id="pflege-reduziert">
+          <label class="col-sm-2 button" for="pflege-reduziert">reduziert</label>
+          <input type="radio" name="pflegezustand" value="unzureichendem" id="pflege-unzureichend">
+          <label class="col-sm-2 button" for="pflege-unzureichend">unzureichend</label>
+          <label class='col-sm-5'></label>
+        </div>
+      </div>
+    </section>
+    <section class="container" id="corpus">
+      <div class="row">
+        <h4 class="col-sm-2">Körperbau</h4>
+        <div class='col-sm-9 textbox'>
+          <input type="radio" name="corpus" value="proportioniertem" id="corpus-prop">
+          <label class="col-sm-2 button" for="corpus-prop">proportioniert</label>
+          <input type="radio" name="corpus" value='unproportioniertem' id="corpus-unprop">
+          <label class="col-sm-2 button" for="corpus-unprop">unproportioniert</label>
+          <label class="col-sm-7"><input type="text" name="fehlbildung" placeholder="Fehlbildungen"></label>
+        </div>
+      </div>
+    </section>
+  </section>
+
+
+  <!--HAUT-->
+  <section class="jumbotron">
+    <h2>Haut</h2>
+    <section class="container" id="kolorit">
+      <div class="row">
+        <h4 class=col-sm-2>Kolorit</h4>
+        <div class="col-sm-9 textbox">
+          <input type="radio" name="kolorit" value="rosig" id="kolorit-rosig">
+          <label class="col-sm-2 button" for="kolorit-rosig">rosig</label>
+          <input type="radio" name="kolorit" value="blass" id="kolorit-blass">
+          <label class="col-sm-2 button" for="kolorit-blass">blass</label>
+          <input type="radio" name="kolorit" value="zyanotisch" id="kolorit-zyan">
+          <label class="col-sm-2 button" for="kolorit-zyan">zyanotisch</label>
+          <input type="radio" name="kolorit" value="ikterisch" id="kolorit-ikterisch">
+          <label class="col-sm-2 button" for="kolorit-ikterisch">ikterisch</label>
+          <label class="col-sm-3" for='kolorit-sonstig'><input type="text" name="kolorit-sonstig" placeholder="Sonstiges" id='kolorit-sonstig'></label>
+
+        </div>
+      </div>
+    </section>
+    <section class="container" id="turgor">
+      <div class="row">
+        <h4 class="col-sm-2">Turgor</h4>
+        <div class="col-sm-9 textbox">
+          <input type="radio" name="turgor" value="ausreichend" id='turgor-ausreichend'>
+          <label class="col-sm-2 button" for="turgor-ausreichend">ausreichend</label>
+          <input type="radio" name="turgor" value="reduziert" id="turgor-reduziert">
+          <label class="col-sm-2 button" for="turgor-reduziert">reduziert</label>
+          <label class='col-sm-7'></label>
+        </div>
+      </div>
+    </section>
+    <section class="container" id="effloreszenzen">
+      <div class="row">
+        <h4 class="col-sm-2">Effloreszenzen</h4>
+        <div class="col-sm-9 textbox">
+          <input type="radio" name="effl-keine" value="keine" id='effl-keine'>
+          <label class="col-sm-2 button" for="effl-keine">keine</label>
+          <label class="col-sm-9"><input type="text" name="effloreszenzen" placeholder="Petechien, Ekzeme, Prellmarken, etc."></label>
+        </div>
+      </div>
+    </section>
+  </section>
+
+
+  <!--SKELETT UND BEWEGUNGSAPPARAT-->
+  <section class="jumbotron">
+    <h2 class="col-sm-3">Skelett- und Bewegungsapparat</h2>
+    <input type="checkbox" name="body-opb" value="orientierend unauffällig" id="body-opb" checked>
+    <label class="col-sm-6 button-opb" for="body-opb">orientierend unauffällig</label>
+    <label class='dropdown'for="toggle-skelett">DropDown Menu</label>
+    <input type="checkbox" id="toggle-skelett">
+    <div class='hide container'><br>
+      <div class="row">
+        <h4 class="col-sm-2">Allgemein</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="body-bewegungseinschr" value="Bewegungseinschränkung" id="body-bewegungseinschr">
+          <label class="col-sm-3 button" for="body-bewegungseinschr"> Bewegungseinschränkung</label>
+          <input type="checkbox" name="body-ds" value="knöcherner Druckschmerz" id="body-ds">
+          <label class="col-sm-2 button" for="body-ds">knöcherner DS</label>
+          <input type="checkbox" name="body-redness" value="Rötung" id="body-redness">
+          <label class="col-sm-2 button" for="body-redness">Rötung</label>
+          <input type="checkbox" name="body-schwellung" value="Schwellung" id="body-schwellung">
+          <label class="col-sm-2 button" for="body-schwellung">Schwellung</label>
+          <input type="checkbox" name="body-warm" value="Überwärmung" id="body-warm">
+          <label class="col-sm-2 button" for="body-warm">Überwärmung</label>
+          <label class="col-sm-11"><input type="text" name="body-lokalisation" placeholder="Lokalisation"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Gipsschiene</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="gips-oa" value="Oberarm" id="gips-oa">
+          <label class="col-sm-2 button" for="gips-oa">Oberarm</label>
+          <input type="checkbox" name="gips-ua" value="Unterarm" id="gips-ua">
+          <label class="col-sm-2 button" for="gips-ua">Unterarm</label>
+          <input type="checkbox" name="gips-os" value="Oberschenkel" id="gips-os">
+          <label class="col-sm-2 button" for="gips-os">Oberschenkel</label>
+          <input type="checkbox" name="gips-us" value="Unterschenkel" id="gips-us">
+          <label class="col-sm-2 button" for="gips-us">Unterschenkel</label>
+          <input type="checkbox" name="gips-r" value="rechts" id='gips-r'>
+          <label class="col-sm-1 button" for='gips-r'>re</label>
+          <input type="checkbox" name="gips-l" value="links" id='gips-l'>
+          <label class="col-sm-1 button" for='gips-l'>li</label>
+          <label class='col-sm-1'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Wirbelsäule</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="spine-opb" value="palpatorisch intakt" id='spine-opb'>
+          <label class="col-sm-2 button" for='spine-opb'>palpatorisch intakt</label>
+          <input type="checkbox" name="spine-skoliose" value="Skoliose" id="spine-skoliose">
+          <label class="col-sm-2 button" for="spine-skoliose">Skoliose</label>
+          <input type="checkbox" name="spine-kyphose" value="Kyphose" id="spine-kyphose">
+          <label class="col-sm-2 button" for="spine-kyphose">Kyphose</label>
+          <input type="checkbox" name="spine-lordose" value="Lordose" id="spine-lordose">
+          <label class="col-sm-2 button" for="spine-lordose">Lordose</label>
+          <input type="checkbox" name="spine-bewegungseinschr" value="Bewegungseinschränkung" id="spine-bewegungseinschr">
+          <label class="col-sm-3 button" for="spine-bewegungseinschr">Bewegungseinschränkung</label>
+          <label class="col-sm-11"><input type="text" name="spine-sonstig" placeholder="Zusatztext, z.B. Einschränkung bei welcher Bewegung"><label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Hüfte</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="hip-beugung" value="Beugehemmung" id="hip-beugung">
+          <label class="col-sm-2 button" for="hip-beugung">Beugehemmung</label>
+          <input type="checkbox" name="hip-streckung" value="Streckhemmung" id="hip-streckung">
+          <label class="col-sm-2 button" for="hip-streckung">Streckhemmung</label>
+          <input type="checkbox" name="hip-aussenrot" value="Außenrotationshemmung" id="hip-aussenrot">
+          <label class="col-sm-2 button" for="hip-aussenrot">Außenrot.hemmung</label>
+          <input type="checkbox" name="hip-innenrot" value="Innenrotationshemmung" id="hip-innenrot">
+          <label class="col-sm-2 button" for="hip-innenrot">Innenrot.hemmung</label>
+          <input type="checkbox" name="hip-seite-r" value="rechten" id="hip-seite-r">
+          <label class="col-sm-1 button" for="hip-seite-r">re</label>
+          <input type="checkbox" name="hip-seite-l" value="linken" id="hip-seite-l">
+          <label class="col-sm-1 button" for="hip-seite-l">li</label>
+          <label class='col-sm-1'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Knie</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="knee-beugung" value="Beugehemmung" id="knee-beugung">
+          <label class="col-sm-2 button" for="knee-beugung">Beugehemmung</label>
+          <input type="checkbox" name="knee-streckung" value="Streckhemmung" id="knee-streckung">
+          <label class="col-sm-2 button" for="knee-streckung">Streckhemmung</label>
+          <input type="checkbox" name="knee-aussenrot" value="Außenrotationshemmung" id="knee-aussenrot">
+          <label class="col-sm-2 button" for="knee-aussenrot">Außenrot.hemmung</label>
+          <input type="checkbox" name="knee-innenrot" value="Innenrotationshemmung" id="knee-innenrot">
+          <label class="col-sm-2 button" for="knee-innenrot">Innenrot.hemmung</label>
+          <input type="checkbox" name="knee-seite-r" value="rechten" id="knee-seite-r">
+          <label class="col-sm-1 button" for="knee-seite-r">re</label>
+          <input type="checkbox" name="knee-seite-l" value="linken" id="knee-seite-l">
+          <label class="col-sm-1 button" for="knee-seite-l">li</label>
+          <label class='col-sm-1'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Sonstiges</h4>
+        <div class="col-sm-9 textbox"><label class="col-sm-11"><textarea rows="3" name="body-freitext" placeholder="Freitext"></textarea></label></div>
+      </div>
+  </div>
+  </section>
+
+
+  <!--AUGE-->
+  <section class="jumbotron">
+    <h2 class="col-sm-3">Augen</h2>
+    <input type="checkbox" name="auge-opb" value="Pupillen isokor, Lichtreaktion seitengleich und prompt, Bulbusbeweglichkeit frei in alle Richtungen" id="auge-opb" checked>
+    <label class="col-sm-6 button-opb" for="auge-opb">Pupillen isokor, Lichtreaktion seitengleich und prompt, Bulbusbeweglichkeit frei in alle Richtungen</label>
+    <label class='dropdown'for="toggle-auge">DropDown Menu</label>
+    <input type="checkbox" id="toggle-auge">
+    <div class='hide container'><br>
+      <div class="row">
+        <h4 class="col-sm-2">Pupillen</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="isokor" value="Pupillen isokor" id='isokor'>
+          <label class="col-sm-2 button" for="isokor">isokor</label>
+          <input type="checkbox" name="anisokor" value="Pupillen anisokor" id="anisokor">
+          <label class="col-sm-2 button" for="anisokor">anisokor</label>
+          <input type="checkbox" name="aniso-r" value="rechts > links" id="aniso-r">
+          <label class="col-sm-1 button" for="aniso-r">re > li</label>
+          <input type="checkbox" name="aniso-l" value="links > rechts" id='aniso-l'>
+          <label class="col-sm-1 button" for="aniso-l">li > re</label>
+          <label class='col-sm-5'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Lichtreaktion</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="lr-prompt" value="Lichtreaktion seitengleich und prompt" id='lr-prompt'>
+          <label class="col-sm-2 button" for="lr-prompt">stgl. und prompt</label>
+          <input type="checkbox" name="lr-verz" value="verzögert" id='lr-verz'>
+          <label class="col-sm-2 button" for='lr-verz'>verzögert</label>
+          <input type="checkbox" name="lr-verz-r" value="rechts" id='lr-verz-r'>
+          <label class="col-sm-1 button" for='lr-verz-r'>re</label>
+          <input type="checkbox" name="lr-verz-l" value="links" id='lr-verz-l'>
+          <label class="col-sm-1 button" for='lr-verz-l'>li</label>
+          <label class='col-sm-5'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Bulbusbeweglichkeit</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="bulbus-frei" value="Bulbusbeweglichkeit frei in alle Richtungen" id='bulbus-frei'>
+          <label class="col-sm-3 button" for='bulbus-frei'>frei in alle Richtungen</label>
+          <label class="col-sm-8"><input type="text" name="bulbus-eingeschr" placeholder="eingeschränkt:"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Konjunktivitis</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="konj-r" value="rechts" id='konj-r'>
+          <label class="col-sm-2 button" for="konj-r">rechts</label>
+          <input type="checkbox" name="konj-l" value="links" id="konj-l">
+          <label class="col-sm-2 button" for="konj-l">links</label>
+          <label class='col-sm-7'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Sonstiges</h4>
+        <div class="col-sm-9 textbox"><label class="col-sm-11"><textarea rows="2" name="auge-freitext" placeholder="Freitext"></textarea></label></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!--OHR-->
+  <section class="jumbotron">
+    <h2 class="col-sm-3">Ohren</h2>
+    <input type="checkbox" name="ohr-opb" value="keine äußerlichen Auffälligkeiten, Trommelfelle beidseits unauffällig" id='ohr-opb' checked>
+    <label class="col-sm-6 button-opb" for='ohr-opb'>keine äußerlichen Auffälligkeiten, Trommelfelle und Gehörgänge bds. unauffällig</label>
+    <label class='dropdown'for="toggle-ohr">DropDown Menu</label>
+    <input type="checkbox" id="toggle-ohr">
+    <div class='hide container'><br>
+      <div class="row">
+        <h4 class="col-sm-2">Äußerliche Auffälligkeiten</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="ohr-outside-keine" value="keine äußerlichen Auffälligkeiten" id='ohr-outside-keine'>
+          <label class="col-sm-2 button" for="ohr-outside-keine">keine</label>
+          <label class="col-sm-9"><input type="text" name="ohr-outside-sonstig" placeholder="Beschreibung"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Trommelfelle</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="tf-opb" value="Trommelfelle beidseits unauffällig" id='tf-opb'>
+          <label class="col-sm-2 button" for="tf-opb">bds. unauffällig</label>
+          <label class='col-sm-1'></label>
+          <input type="checkbox" name="tf-rot" value="gerötet" id='tf-rot'>
+          <label class="col-sm-1 button" for='tf-rot'>gerötet</label>
+          <input type="checkbox" name="tf-rot-r" value="rechts" id='tf-rot-r'>
+          <label class='col-sm-1 button' for='tf-rot-r'>re</label>
+          <input type="checkbox" name="tf-rot-l" value="links" id='tf-rot-l'>
+          <label class="col-sm-1 button" for='tf-rot-l'>li</label>
+          <label class="col-sm-1"></label>
+          <input type="checkbox" name="tf-erguss" value="Erguss" id='tf-erguss'>
+          <label class="col-sm-1 button" for='tf-erguss'>Erguss</label>
+          <input type="checkbox" name="tf-erguss-klar" value="klar" id='tf-erguss-klar'>
+          <label class="col-sm-1 button" for="tf-erguss-klar">klar</label>
+          <input type="checkbox" name="tf-erguss-eitrig" value="eitrig" id='tf-erguss-eitrig'>
+          <label class="col-sm-1 button" for="tf-erguss-eitrig">eitrig</label>
+          <label class='col-sm-1'></label>
+          <label class="col-sm-11"><input type="text" name="tf-sonstig" placeholder="Sonstiges"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Hörvermögen</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="hearing" value="unbeeinträchtigt" id='hearing-opb'>
+          <label class="col-sm-2 button" for='hearing-opb'>unbeeinträchtigt</label>
+          <input type="checkbox" name="hearing" value="beeinträchtigt" id='hearing-path'>
+          <label class="col-sm-2 button" for='hearing-path'>beeinträchtigt</label>
+          <label class='col-sm-7'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Sonstiges</h4>
+        <div class="col-sm-9 textbox"><label class="col-sm-11"><textarea rows="2" name="ohr-freitext" placeholder="Freitext"></textarea></label></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!--NASE-->
+  <section class="jumbotron">
+    <h2 class="col-sm-3">Nase</h2>
+    <input type="checkbox" name="nase-opb" value="frei" id='nase-opb' checked>
+    <label class="col-sm-6 button-opb" for='nase-opb'>frei/durchgängig</label>
+    <label class='dropdown'for="toggle-nase">DropDown Menu</label>
+    <input type="checkbox" id="toggle-nase">
+    <div class='hide container'><br>
+      <div class='row'>
+        <h4 class="col-sm-2">Sekretion</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="sekretion-ser" value="serös" id='sekretion-ser'>
+          <label class="col-sm-2 button" for='sekretion-ser'>serös</label>
+          <input type="checkbox" name="sekretion-eitrig" value="eitrig" id='sekretion-eitrig'>
+          <label class="col-sm-2 button" for='sekretion-eitrig'>eitrig</label>
+          <label class='col-sm-7'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Sonstiges</h4>
+        <div class="col-sm-9 textbox"><label class="col-sm-11"><textarea rows="2" name="nase-freitext" placeholder="Freitext"></textarea></label></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!--RACHEN-->
+  <section class="jumbotron">
+    <h2 class="col-sm-3">Rachen</h2>
+    <input type="checkbox" name="rachen-opb" value="nicht gerötet, Tonsillen unauffällig" id="rachen-opb" checked>
+    <label class="col-sm-6 button-opb" for='rachen-opb'>nicht gerötet, Tonsillen unauffällig</label>
+    <label class='dropdown'for="toggle-rachen">DropDown Menu</label>
+    <input type="checkbox" id="toggle-rachen">
+    <div class='hide container'><br>
+      <div class="row">
+        <h4 class="col-sm-2">Zahnstatus</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="zs-opb" value="Zahnstatus unauffällig" id='zs-opb'>
+          <label class="col-sm-2 button" for='zs-opb'>unauffällig</label>
+          <input type="checkbox" name="zs-kariös" value="Zahnstatus kariös" id='zs-karies'>
+          <label class="col-sm-2 button" for='zs-karies'>kariös</label>
+          <input type="checkbox" name="zs-saniert" value="Zahnstatus saniert" id='zs-saniert'>
+          <label class="col-sm-2 button" for='zs-saniert'>saniert</label>
+          <label class="col-sm-5"><input type="text" name="zs-sonstig" placeholder="Sonstiges"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Schleimhäute</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="schleimhaut-feucht" value="Schleimhäute feucht" id='schleimhaut-feucht'>
+          <label class="col-sm-2 button" for='schleimhaut-feucht'>feucht</label>
+          <input type="checkbox" name="schleimhaut-trocken" value="Schleimhäute trocken" id='schleimhaut-trocken'>
+          <label class="col-sm-2 button" for='schleimhaut-trocken'>trocken</label>
+          <input type="checkbox" name="schleimhaut-aphten" value="Schleimhäute aphtös" id='schleimhaut-aphten'>
+          <label class="col-sm-2 button" for='schleimhaut-aphten'>aphtös</label>
+          <label class="col-sm-5"><input type="text" name="schleimhaut-sonstig" placeholder="Sonstiges"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Tonsillen</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="tons-opb" value="unauffällig" id='tons-opb'>
+          <label class="col-sm-2 button" for='tons-opb'>unauffällig</label>
+          <input type="checkbox" name="tons-red" value="gerötet" id='tons-red'>
+          <label class="col-sm-2 button" for='tons-red'>gerötet</label>
+          <input type="checkbox" name="tons-hypertroph" value="hypertroph" id='tons-hypertroph'>
+          <label class="col-sm-2 button" for='tons-hypertroph'>hypertroph</label>
+          <input type="checkbox" name="tons-belegt" value="belegt" id='tons-belegt'>
+          <label class="col-sm-2 button" for='tons-belegt'>belegt</label>
+          <label class="col-sm-3"><input type="text" name="tons-sonstig" placeholder="Sonstiges"></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!--LYMPHKNOTEN-->
+  <section class="jumbotron">
+    <h2 class="col-sm-3">Lymphknoten</h2>
+    <input type="checkbox" name="lk-opb" value="unauffällig, keine vergrößerten Lymphknoten palpabel" id='lk-opb' checked>
+    <label class="col-sm-6 button-opb" for='lk-opb'>unauffällig, keine vergrößerten Lymphknoten palpabel</label>
+    <label class='dropdown'for="toggle-lk">DropDown Menu</label>
+    <input type="checkbox" id="toggle-lk">
+    <div class='hide container'><br>
+      <div class="row">
+        <h4 class="col-sm-2">Lymphknoten</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="lk-cerv" value="cervical vergrößert" id='lk-cerv'>
+          <label class="col-sm-2 button" for='lk-cerv'>cervical</label>
+          <input type="checkbox" name="lk-ingui" value="inguinal vergrößert" id='lk-ingui'>
+          <label class="col-sm-2 button" for='lk-ingui'>inguinal</label>
+          <input type="checkbox" name="lk-axill" value="axillär vergrößert" id='lk-axill'>
+          <label class="col-sm-2 button" for='lk-axill'>axillär</label>
+          <input type="checkbox" name="lk-supraclav" value="supraclaviculär vergrößert" id='lk-supraclav'>
+          <label class="col-sm-2 button" for='lk-supraclav'>supraclaviculär</label>
+          <label class="col-sm-3"><input type="text" name="lk-sonstig" placeholder="Sonstige Lokalisation"></label>
+          <label class="col-sm-11"><input type="text" name="lk-beschr" placeholder="Seite, Größe, Beschreibung"><label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!--ATEMWEGE-->
+  <section class="jumbotron">
+    <h2 class="col-sm-3">Pulmo</h2>
+    <input type="checkbox" name="pulmo-opb" value="Eupnoe, seitengleiches vesikuläres Atemgeräusch ohne Nebengeräusche oder Dyspnoezeichen" id='pulmo-opb' checked>
+    <label class="col-sm-6 button-opb" for='pulmo-opb'>Eupnoe, seitengleiches vesikuläres Atemgeräusch ohne Nebengeräusche oder Dyspnoezeichen</label>
+    <label class='dropdown'for="toggle-pulmo">DropDown Menu</label>
+    <input type="checkbox" id="toggle-pulmo">
+    <div class='hide container'><br>
+      <div class="row">
+        <h4 class="col-sm-2">Thoraxform</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="thoraxform" value="symmetrisch" id='thoraxform-symm'>
+          <label class="col-sm-2 button" for='thoraxform-symm'>symmetrisch</label>
+          <input type="checkbox" name="thoraxform" value="asymmetrisch" id='thoraxform-asymm'>
+          <label class="col-sm-2 button" for='thoraxform-asymm'>asymmetrisch</label>
+          <label class="col-sm-4"><input type="text" size="31" name="thoraxform-sonstig" placeholder="Sonstiges"></label>
+          <label class='col-sm-3'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Atmung</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="atmung-eupnoe" value="Eupnoe" id='atmung-eupnoe'>
+          <label class="col-sm-2 button" for='atmung-eupnoe'>Eupnoe</label>
+          <input type="checkbox" name="atmung-dyspnoe" value="Dyspnoe" id='atmung-dyspnoe'>
+          <label class="col-sm-2 button" for='atmung-dyspnoe'>Dyspnoe</label>
+          <input type="checkbox" name="atmung-tachypnoe" value="Tachypnoe" id='atmung-tachypnoe'>
+          <label class="col-sm-2 button" for='atmung-tachypnoe'>Tachypnoe</label>
+          <input type="checkbox" name="atmung-orthopnoe" value="Orthopnoe" id='atmung-orthopnoe'>
+          <label class="col-sm-2 button" for='atmung-orthopnoe'>Orthopnoe</label>
+          <label class="col-sm-3">Frequenz: <input type="number" style="width: 60px;" name="atmung-frequenz"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Atemgeräusch</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="atemger-stgl" value="seitengleich" id='atemger-stgl'>
+          <label class="col-sm-2 button" for='atemger-stgl'>seitengleich</label>
+          <input type="checkbox" name="atemger-schwach" value="abgeschwächt" id='atemger-schwach'>
+          <label class="col-sm-2 button" for='atemger-schwach'>abgeschwächt</label>
+          <input type="checkbox" name="atemger-schwach-r" value="rechts" id='atemger-schwach-r'>
+          <label class='col-sm-1 button' for='atemger-schwach-r'>re</label>
+          <input type="checkbox" name="atemger-schwach-l" value="links" id='atemger-schwach-l'>
+          <label class='col-sm-1 button' for='atemger-schwach-l'>li</label>
+          <label class='col-sm-5'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Stridor</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="stridor-insp" value="inspiratorischer" id='stridor-insp'>
+          <label class="col-sm-2 button" for='stridor-insp'>inspiratorisch</label>
+          <input type="checkbox" name="stridor-exsp" value="exspiratorischer" id='stridor-exsp'>
+          <label class="col-sm-2 button" for='stridor-exsp'>exspiratorisch</label>
+          <label class='col-sm-7'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Obstruktion</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="obstr-pfeifen" value="Pfeifen" id='obstr-pfeifen'>
+          <label class="col-sm-2 button" for='obstr-pfeifen'>Pfeifen</label>
+          <input type="checkbox" name="obstr-giemen" value="Giemen" id='obstr-giemen'>
+          <label class="col-sm-2 button" for='obstr-giemen'>Giemen</label>
+          <input type="checkbox" name="obstr-brummen" value="Brummen" id='obstr-brummen'>
+          <label class="col-sm-2 button" for='obstr-brummen'>Brummen</label>
+          <label class="col-sm-5"><input type="text" size="43" name="obstr-lokal" placeholder="Lokalisation"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Rasselgeräusche</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="rasseln-fb" value="feinblasige" id='rasseln-fb'>
+          <label class="col-sm-2 button" for='rasseln-fb'>feinblasig</label>
+          <input type="checkbox" name="rasseln-mb" value="mittelblasige" id='rasseln-mb'>
+          <label class="col-sm-2 button" for='rasseln-mb'>mittelblasig</label>
+          <input type="checkbox" name="rasseln-gb" value="grobblasige" id='rasseln-gb'>
+          <label class="col-sm-2 button" for='rasseln-gb'>grobblasig</label>
+          <label class="col-sm-5"><input type="text" size="43" name="rasseln-lokal" placeholder="Lokalisation"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Einziehungen</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="einziehungen-subc" value="subcostale" id='einziehungen-subc'>
+          <label class="col-sm-2 button" for='einziehungen-subc'>subcostal</label>
+          <input type="checkbox" name="einziehungen-jug" value="juguläre" id='einziehungen-jug'>
+          <label class="col-sm-2 button" for='einziehungen-jug'>jugulär</label>
+          <input type="checkbox" name="einziehungen-nf" value="Nasenflügeln" id='einziehungen-nf'>
+          <label class="col-sm-2 button" for='einziehungen-nf'>Nasenflügeln</label>
+          <label class='col-sm-5'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Sonstiges</h4>
+        <div class="col-sm-9 textbox"><label class="col-sm-11"><textarea rows="2" name="pulmo-freitext" placeholder="Freitext"></textarea></label></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!--HERZ-->
+  <section class="jumbotron">
+    <h2 class="col-sm-3">Cor</h2>
+    <input type="checkbox" name="cor-opb" value="rein, rhythmisch, normofrequent, keine pathologischen Geräusche" id='cor-opb' checked>
+    <label class="col-sm-6 button-opb" for='cor-opb'>rein, rhythmisch, normofrequent, keine pathologischen Geräusche</label>
+    <label class='dropdown'for="toggle-herz">DropDown Menu</label>
+    <input type="checkbox" id="toggle-herz">
+    <div class='hide container'><br>
+      <div class="row">
+        <h4 class="col-sm-2">Herztöne</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="ht-rein" value="rein" id='ht-rein'>
+          <label class="col-sm-2 button" for='ht-rein'>rein</label>
+          <input type="checkbox" name="ht-gespalten" value="gespalten" id='ht-gespalten'>
+          <label class="col-sm-2 button" for='ht-gespalten'>gespalten</label>
+          <label class="col-sm-5"><input type="text" name="ht-sonstig" placeholder="Sonstiges"></label>
+          <label class='col-sm-2'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Herzaktion</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="herzaktion" value="regelmäßig" id='herzaktion-regel'>
+          <label class="col-sm-2 button" for='herzaktion-regel'>regelmäßig</label>
+          <input type="checkbox" name="herzaktion" value="unregelmäßig" id='herzaktion-unregel'>
+          <label class="col-sm-2 button" for='herzaktion-unregel'>unregelmäßig</label>
+          <label class='col-sm-7'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Frequenz</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="herzfrequenz" value="normofrequent" id='hf-normo'>
+          <label class="col-sm-2 button" for='hf-normo'>normofrequent</label>
+          <input type="checkbox" name="herzfrequenz" value="tachykard" id='hf-tachy'>
+          <label class="col-sm-2 button" for='hf-tachy'>tachkard</label>
+          <input type="checkbox" name="herzfrequenz" value="bradykard" id='hf-brady'>
+          <label class="col-sm-2 button" for='hf-brady'>bradykard</label>
+          <label class='col-sm-5'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Herzgeräusche</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="murmur-opb" value="keine pathologischen Geräusche" id='murmur-opb'>
+          <label class="col-sm-2 button" for='murmur-opb'>keine</label>
+          <label class="col-sm-4"><input type="text" name="murmur-sys" placeholder="Systolikum: Stärke, Lokalisation"></label>
+          <label class="col-sm-5"><input type="text" name="murmur-dia" placeholder="Diastolikum: Stärke, Lokalisation"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Pulsstatus</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="pulsstatus" value="an allen Extremitäten unauffällig" id='pulsstatus-opb'>
+          <label class="col-sm-4 button" for='pulsstatus-opb'>an allen Extremitäten unauffällig</label>
+          <label class="col-sm-7"><input type="text" name="pulsstatus" placeholder="peripheres Defizit: Lokalisation"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Sonstiges</h4>
+        <div class="col-sm-9 textbox"><label class="col-sm-11"><textarea rows="2" name="cor-freitext" placeholder="Freitext"></textarea></label></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!--ABDOMEN-->
+  <section class="jumbotron">
+    <h2 class="col-sm-3">Abdomen</h2>
+    <input type="checkbox" name="abd-opb" value="unauffällig, kein Druckschmerz, keine Resistenz, keine Abwehrspannung, Darmgeräusche ubiquitär" id='abd-opb' checked>
+    <label class="col-sm-6 button-opb" for='abd-opb'>unauffällig, kein Druckschmerz, keine Resistenz, keine Abwehrspannung, Darmgeräusche ubiquitär</label>
+    <label class='dropdown'for="toggle-abdomen">DropDown Menu</label>
+    <input type="checkbox" id="toggle-abdomen">
+    <div class='hide container'><br>
+      <div class="row">
+        <h4 class="col-sm-2">Niveau</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="abdniveau" value="im Thoraxniveau" id='abdniveau-thorax'>
+          <label class="col-sm-2 button" for='abdniveau-thorax'>im Thoraxniveau</label>
+          <input type="checkbox" name="abdniveau" value="vorgewölbt" id='abdniveau-distended'>
+          <label class="col-sm-2 button" for='abdniveau-distended'>vorgewölbt</label>
+          <input type="checkbox" name="abdniveau" value="eingefallen" id='abdniveau-eingefallen'>
+          <label class="col-sm-2 button" for='abdniveau-eingefallen'>eingefallen</label>
+          <label class='col-sm-5'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Druckschmerz</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="abdds-opb" value="kein Druckschmerz" id='abdds-opb'>
+          <label class="col-sm-1 button" for='abdds-opb'>keiner</label>
+          <input type="checkbox" name="abdds-reub" value="rechter Unterbauch" id='abdds-reub'>
+          <label class="col-sm-2 button" for='abdds-reub'>re. UB</label>
+          <input type="checkbox" name="abdds-periumb" value="periumbilical" id='abdds-periumb'>
+          <label class="col-sm-2 button" for='abdds-periumb'>periumbilical</label>
+          <label class="col-sm-6"><input type="text" name="abdds-sonstig" placeholder="Sonstige Lokalisation"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Appendizitische Zeichen</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="appzeichen-opb" value="keine appendizitischen Zeichen" id='appzeichen-opb'>
+          <label class="col-sm-1 button" for='appzeichen-opb'>keine</label>
+          <input type="checkbox" name="appzeichen-lanz" value="McBurney/Lanz positiv" id='appzeichen-lanz'>
+          <label class="col-sm-2 button" for='appzeichen-lanz'>McBurney/Lanz</label>
+          <input type="checkbox" name="appzeichen-ks" value="Klopfschmerz" id='appzeichen-ks'>
+          <label class="col-sm-2 button" for='appzeichen-ks'>Klopfschmerz</label>
+          <input type="checkbox" name="appzeichen-psoas" value="Psoasdehnungsschmerz" id='appzeichen-psoas'>
+          <label class="col-sm-3 button" for='appzeichen-psoas'>Psoasdehnungsschmerz</label>
+          <input type="checkbox" name="appzeichen-klls" value="kontralateraler Loslassschmerz" id='appzeichen-klls'>
+          <label class="col-sm-1 button" for='appzeichen-klls'>KLLS</label>
+          <input type="checkbox" name="appzeichen-jump" value="Hüpfschmerz" id='appzeichen-jump'>
+          <label class="col-sm-2 button" for='appzeichen-jump'>Hüpfschmerz</label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Abwehrspannung</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="aws" value="keine Abwehrspannung" id='aws-opb'>
+          <label class="col-sm-1 button" for='aws-opb'>keine</label>
+          <label class="col-sm-10"><input type="text" name="aws" placeholder="Lokalisation"></label>
+        </div>
+      </div>
+      <div class='row'>
+        <h4 class="col-sm-2">Peritonismus</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="peritonismus" value="Peritonismus" id='peritonismus-j'>
+          <label class="col-sm-3 button" for='peritonismus-j'>ja</label>
+          <input type="checkbox" name="peritonismus" value="kein Peritonismus" id='peritonismus-n'>
+          <label class="col-sm-2 button" for='peritonismus-n'>nein</label>
+          <label class='col-sm-6'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Nierenlager</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="nierenlager-opb" value="nicht klopfschmerzhaft" id='nierenlager-opb'>
+          <label class="col-sm-3 button" for='nierenlager-opb'>nicht klopfschmerzhaft</label>
+          <input type="checkbox" name="nierenlager-ks" value="klopfschmerzhaft"id='nierenlager-ks'>
+          <label class="col-sm-2 button" for='nierenlager-ks'>klopfschmerzhaft</label>
+          <input type="checkbox" name="nierenlager-ks-r" value="rechts" id='nierenlager-ks-r'>
+          <label class="col-sm-1 button" for='nierenlager-ks-r'>re</label>
+          <input type="checkbox" name="nierenlager-ks-l" value="links" id='nierenlager-ks-l'>
+          <label class="col-sm-1 button" for='nierenlager-ks-l'>li</label>
+          <label class='col-sm-4'></label>
+        </div>
+      </div>
+      <div class='row'>
+        <h4 class="col-sm-2">Leber/Milz</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="hsm-opb" value="keine Hepatosplenomegalie" id='hsm-opb'>
+          <label class="col-sm-3 button" for='hsm-opb'>keine HSM</label>
+          <input type="checkbox" name="hepatomeg" value="Hepatomegalie" id='hepatomeg'>
+          <label class="col-sm-2 button" for='hepatomeg'>Hepatomegalie</label>
+          <input type="checkbox" name="splenomeg" value="Splenomegalie" id='splenomeg'>
+          <label class="col-sm-2 button" for='splenomeg'>Splenomegalie</label>
+          <label class='col-sm-4'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Sonstiges</h4>
+        <div class="col-sm-9 textbox"><label class="col-sm-11"><textarea rows="2" name="abd-freitext" placeholder="Freitext"></textarea></label></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!--GESCHLECHTSORGANE-->
+  <section class="jumbotron">
+    <h2>Geschlechtsorgane</h2>
+    <label class="col-sm-6"></label>
+    <label class='dropdown'for="toggle-pimmel">DropDown Menu</label>
+    <input type="checkbox" id="toggle-pimmel">
+    <div class='hide container'><br>
+      <div class="row">
+        <h4 class="col-sm-2">männlich</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="stadium-m" value="G1" id='stadium-m-g1'>
+          <label class="col-sm-1 button" for='stadium-m-g1'>G1</label>
+          <input type="checkbox" name="stadium-m" value="G2" id='stadium-m-g2'>
+          <label class="col-sm-1 button" for='stadium-m-g2'>G2</label>
+          <input type="checkbox" name="stadium-m" value="G3" id='stadium-m-g3'>
+          <label class="col-sm-1 button" for='stadium-m-g3'>G3</label>
+          <input type="checkbox" name="stadium-m" value="G4" id='stadium-m-g4'>
+          <label class="col-sm-1 button" for='stadium-m-g4'>G4</label>
+          <input type="checkbox" name="stadium-m" value="G5" id='stadium-m-g5'>
+          <label class="col-sm-1 button" for='stadium-m-g5'>G5</label>
+          <label class='col-sm-6'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2"></h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="descensus-opb" value="Hoden beidseits descendiert" id='descensus-opb'>
+          <label class="col-sm-3 button" for='descensus-opb'>Hoden bds. descendiert</label>
+          <input type="checkbox" name="descensus-path" value="Hodenhochstand" id='descensus-path'>
+          <label class="col-sm-2 button" for='descensus-path'>Hodenhochstand</label>
+          <input type="checkbox" name="descensus-path-r" value="rechts" id='descensus-path-r'>
+          <label class="col-sm-1 button" for='descensus-path-r'>re</label>
+          <input type="checkbox" name="descensus-path-l" value="links" id='descensus-path-l'>
+          <label class="col-sm-1 button" for='descensus-path-l'>li</label>
+          <label class='col-sm-4'></label>
+        </div>
+      </div>
+      <br><br>
+      <div class="row">
+        <h4 class="col-sm-2">weiblich</h4>
+        <div class="col-sm-9 textbox">
+          <input type="radio" name="stadium-wb" value="B1" id='stadium-w-b1'>
+          <label class="col-sm-1 button" for='stadium-w-b1'>B1</label>
+          <input type="radio" name="stadium-wb" value="B2" id='stadium-w-b2'>
+          <label class="col-sm-1 button" for='stadium-w-b2'>B2</label>
+          <input type="radio" name="stadium-wb" value="B3" id='stadium-w-b3'>
+          <label class="col-sm-1 button" for='stadium-w-b3'>B3</label>
+          <input type="radio" name="stadium-wb" value="B4" id='stadium-w-b4'>
+          <label class="col-sm-1 button" for='stadium-w-b4'>B4</label>
+          <input type="radio" name="stadium-wb" value="B5" id='stadium-w-b5'>
+          <label class="col-sm-1 button" for='stadium-w-b5'>B5</label>
+          <label class="col-sm-1"></label>
+          <input type="radio" name="stadium-wp" value="P1" id='stadium-w-p1'>
+          <label class="col-sm-1 button" for='stadium-w-p1'>P1</label>
+          <input type="radio" name="stadium-wp" value="P2" id='stadium-w-p2'>
+          <label class="col-sm-1 button" for='stadium-w-p2'>P2</label>
+          <input type="radio" name="stadium-wp" value="P3" id='stadium-w-p3'>
+          <label class="col-sm-1 button" for='stadium-w-p3'>P3</label>
+          <input type="radio" name="stadium-wp" value="P4" id='stadium-w-p4'>
+          <label class="col-sm-1 button" for='stadium-w-p4'>P4</label>
+          <input type="radio" name="stadium-wp" value="P5" id='stadium-w-p5'>
+          <label class="col-sm-1 button" for='stadium-w-p5'>P5</label>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <h4 class="col-sm-2">Sonstiges</h4>
+        <div class="col-sm-9 textbox"><label class="col-sm-11"><textarea rows="2" name="pimmel-freitext" placeholder="Freitext"></textarea></label></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!--NEUROLOGIE-->
+  <section class="jumbotron">
+    <h2 class="col-sm-3">Neurologie</h2>
+    <input type="checkbox" name="neuro-opb" value="wach, voll orientiert, kein Meningismus, Muskeltonus normoton, grobe Kraft seitengleich und ohne Defizit, Koordination unauffällig, Hirnnerven beobachtend unauffällig" id='neuro-opb' checked>
+    <label class="col-sm-6 button-opb" for='neuro-opb'>wach, voll orientiert, kein Meningismus, Muskeltonus normoton, grobe Kraft seitengleich und ohne Defizit, Koordination unauffällig, Hirnnerven beobachtend unauffällig</label>
+    <label class='dropdown'for="toggle-neuro">DropDown Menu</label>
+    <input type="checkbox" id="toggle-neuro">
+    <div class='hide container'><br>
+      <div class="row">
+        <h4 class="col-sm-2">Vigilanz</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="vigilanz" value="wach" id='vigilanz-wach'>
+          <label class="col-sm-2 button" for='vigilanz-wach'>wach</label>
+          <input type="checkbox" name="vigilanz" value="somnolent" id='vigilanz-somnolent'>
+          <label class="col-sm-2 button" for='vigilanz-somnolent'>somnolent</label>
+          <input type="checkbox" name="vigilanz" value="komatös" id='vigilanz-koma'>
+          <label class="col-sm-2 button" for='vigilanz-koma'>komatös</label>
+          <input type="checkbox" name="vigilanz" value="bewusstlos" id='vigilanz-bewusstlos'>
+          <label class="col-sm-2 button" for='vigilanz-bewusstlos'>bewusstlos</label>
+          <label class='col-sm-3'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Orientierung</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="orient-opb" value="voll orientiert" id='orient-opb'>
+          <label class="col-sm-2 button" for='orient-opb'>voll orientiert</label>
+          <input type="checkbox" name="orient-alter" value="altersentsprechend orientiert" id='orient-alter'>
+          <label class="col-sm-3 button" for='orient-alter'>altersentsprechend orientiert</label>
+          <input type="checkbox" name="orient-nicht" value="nicht orientiert" id='orient-nicht'>
+          <label class="col-sm-2 button" for='orient-nicht'>nicht orientiert</label>
+          <input type="checkbox" name="orient-person" value="Person" id='orient-person'>
+          <label class="col-sm-1 button" for='orient-person'>Person</label>
+          <input type="checkbox" name="orient-ort" value="Ort" id='orient-ort'>
+          <label class="col-sm-1 button" for='orient-ort'>Ort</label>
+          <input type="checkbox" name="orient-zeit" value="Zeit" id='orient-zeit'>
+          <label class="col-sm-1 button" for='orient-zeit'>Zeit</label>
+          <label class='col-sm-1'></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Meningismuszeichen</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="menin-opb" value="kein Meningismus" id='menin-opb'>
+          <label class="col-sm-2 button" for='menin-opb'>keine</label>
+          <input type="checkbox" name="menin-nacken" value="Nackensteifigkeit" id='menin-nacken'>
+          <label class="col-sm-2 button" for='menin-nacken'>Nackensteifigkeit</label>
+          <input type="checkbox" name="menin-lasegue" value="Lasèguezeichen positiv" id='menin-lasegue'>
+          <label class="col-sm-2 button" for='menin-lasegue'>Lasègue +</label>
+          <input type="checkbox" name="menin-kniekuss" value="Kniekuss nicht möglich" id='menin-kniekuss'>
+          <label class="col-sm-3 button" for='menin-kniekuss'>Kniekuss nicht mgl.</label>
+          <label class='col-sm-2'></label>
+          <label class="col-sm-11"><input type="text" name="menin-sonstig" placeholder="Sonstiges"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Muskeltonus</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="tonus" value="normoton" id='tonus-normo'>
+          <label class="col-sm-2 button" for='tonus-normo'>normoton</label>
+          <input type="checkbox" name="tonus" value="hypoton" id='tonus-hypo'>
+          <label class="col-sm-2 button" for='tonus-hypo'>hypoton</label>
+          <input type="checkbox" name="tonus" value="hyperton" id='tonus-hyper'>
+          <label class="col-sm-2 button" for='tonus-hyper'>hyperton</label>
+          <label class="col-sm-5"><input type="text" name="tonus-lokal" placeholder="Lokalisation"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Grobe Kraft</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="kraft" value="seitengleich und ohne Defizit" id='kraft-stgl'>
+          <label class="col-sm-3 button" for='kraft-stgl'>stgl./ohne Defizit</label>
+          <label class="col-sm-8"><input type="text" name="kraft" placeholder="auffällig: "></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Koordination</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="koord-opb" value="Koordination unauffällig" id='koord-opb'>
+          <label class="col-sm-2 button" for='koord-opb'>unauffällig</label>
+          <input type="checkbox" name="koord-ataxie" value="Ataxie" id='koord-ataxie'>
+          <label class="col-sm-2 button" for='koord-ataxie'>Ataxie</label>
+          <input type="checkbox" name="koord-fallneigung" value="Fallneigung" id='koord-fallneigung'>
+          <label class="col-sm-3 button" for='koord-fallneigung'>Fallneigung nach</label>
+          <input type="checkbox" name="koord-fallneigung-r" value="nach rechts" id='koord-fallneigung-r'>
+          <label class="col-sm-1 button" for='koord-fallneigung-r'>re</label>
+          <input type="checkbox" name="koord-fallneigung-l" value="nach links" id='koord-fallneigung-l'>
+          <label class="col-sm-1 button" for='koord-fallneigung-l'>li</label>
+          <label class='col-sm-2'></label>
+          <label class="col-sm-11"><input type="text" name="koord-sonstig" placeholder="Sonstiges"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Sensibilität</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="sensib-opb" value="Sensibilität unauffällig" id='sensib-opb'>
+          <label class="col-sm-2 button" for='sensib-opb'>unauffällig</label>
+          <input type="checkbox" name="sensib-paraesth" value="Parästhesie" id='sensib-paraesth'>
+          <label class="col-sm-2 button" for='sensib-paraesth'>Parästhesie</label>
+          <input type="checkbox" name="sensib-dysaesth" value="Dysästhesie" id='sensib-dysaesth'>
+          <label class="col-sm-2 button" for='sensib-dysaesth'>Dysästhesie</label>
+          <label class="col-sm-5"><input type="text" name="sensib-lokal" placeholder="Lokalisation"></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Hirnnerven</h4>
+        <div class="col-sm-9 textbox">
+          <input type="checkbox" name="hirnnerven" value="Hirnnerven beobachtend unauffällig" id='hirnnerven-opb'>
+          <label class="col-sm-3 button" for='hirnnerven-opb'>beobachtend opB</label>
+          <label class="col-sm-8"><input type="text" size="79" name="hirnnerven" placeholder="auffällig: "></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Muskeleigenreflexe</h4>
+        <div class="col-sm-9 textbox">
+          <label class="col-sm-11"><input type="text" name="mer" placeholder="z.B. BSR (+/+), PSR (+/+), Babinski, etc."></label>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-2">Sonstiges</h4>
+        <div class="col-sm-9 textbox"><label class="col-sm-11"><textarea rows="2" name="neuro-freitext" placeholder="Freitext"></textarea></label></div>
+      </div>
+    </div>
+  </section>
+  <section class="jumbotron">
+    <h2>Ergänzungen</h2>
+    <label class="col-sm-6"></label>
+    <label class='dropdown'for="toggle-zusatz">DropDown Menu</label>
+    <input type="checkbox" id="toggle-zusatz">
+    <div class='hide container'><br>
+      <div class="row">
+        <h4 class="col-sm-2">Freitext</h4>
+        <div class="col-sm-9 textbox"><label class="col-sm-11"><textarea rows="5" name="zusatz" placeholder="Freitext"></textarea></label></div>
+      </div>
+    </div>
+  </section>
+  <div class="container"><div class="row justify-content-center"><label class='col-sm-2 submit'><button type="submit"></button>Status bauen</label></div></div>
+</form>
+</body>
+</html>
